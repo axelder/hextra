@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="tour-details max-w-4xl mx-auto p-6">
+  <h1 class="text-3xl font-bold">{{ .Params.tour_title }}</h1>
+
+  {{ with .Params.image }}
+    <img class="my-4 w-full h-auto" src="{{ . }}" >
+  {{ end }}
+
+  <p class="text-lg text-gray-600 my-4">{{ .Params.description }}</p>
+  <p class="text-lg text-gray-900 font-bold">Price: ${{ .Params.current_price }}</p>
+  <p class="text-lg text-red-500 font-bold">Sale Price: ${{ .Params.sale_price }}</p>
+  <p class="text-gray-500">Departure Date: {{ .Params.date_of_departure }}</p>
+
+  <!-- Additional Data -->
+  <dl class="my-6">
+    <dt class="font-bold">Physical Grading</dt>
+    <dd class="text-gray-600">{{ .Params.physical_grading }}</dd>
+    <dt class="font-bold">Tour Type</dt>
+    <dd class="text-gray-600">{{ .Params.tour_type }}</dd>
+    <dt class="font-bold">Tour Code</dt>
+    <dd class="text-gray-600">{{ .Params.tour_code }}</dd>
+  </dl>
+
+  <div class="tour-itinerary my-6">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

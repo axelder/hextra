@@ -1,0 +1,44 @@
+{{ define "main" }}
+
+<section class="tours-list max-w-7xl mx-auto p-6">
+  <h1 class="text-4xl font-bold mb-6">Our Tours</h1>
+  Explore
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {{ range .Pages }}
+      <div class="tour-card border rounded-lg overflow-hidden shadow-lg p-4">
+        <a href="{{ .Permalink }}">
+          <!-- Image -->
+          {{ with .Params.image }}
+            <img class="w-full h-48 object-cover mb-4" src="{{ . }}">
+          {{ end }}
+
+          <!-- Title and Details -->
+          <h2 class="text-xl font-bold">{{ .Params.tour_title }}</h2>
+          <p class="text-gray-500">{{ .Params.tour_type }} Tour</p>
+          <p class="text-gray-500">{{ .Params.no_of_days }} Days in {{ .Params.country }}</p>
+          <p class="text-gray-600">Category: {{ .Params.tour_category }}</p>
+          <p class="text-gray-600">Tags: {{ .Params.tour_tag }}</p>
+
+          <!-- Pricing -->
+          <p class="text-lg text-red-500 mt-2">Sale Price: ${{ .Params.sale_price }}</p>
+          <p class="text-lg text-gray-900">Current Price: ${{ .Params.current_price }}</p>
+          <p class="text-gray-500">Departure Date: {{ .Params.date_of_departure }}</p>
+
+          <!-- Additional Data -->
+          <dl class="mt-4">
+            <dt class="font-bold">Physical Grading</dt>
+            <dd class="text-gray-600">{{ .Params.physical_grading }}</dd>
+            <dt class="font-bold">Tour Type</dt>
+            <dd class="text-gray-600">{{ .Params.tour_type }}</dd>
+            <dt class="font-bold">Tour Code</dt>
+            <dd class="text-gray-600">{{ .Params.tour_code }}</dd>
+          </dl>
+
+          <!-- Button to Tour Page -->
+          <a href="{{ .Permalink }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">View Tour</a>
+        </a>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
