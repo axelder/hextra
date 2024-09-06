@@ -1,0 +1,148 @@
+.hextra-tour-card {
+  padding: 0 !important;
+  box-shadow:
+    0px 4px 11px rgba(0, 0, 0, 0.05),
+    0px 2px 3px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 4px 4px 14px 14px !important;
+  width: calc(33.33% - 20px) !important;
+  max-width: 420px;
+  border: none !important;
+  margin: 0 0 30px 20px !important;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.hextra-tour-card .feature_image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.hextra-tour-card .tag {
+  position: absolute;
+  padding: 5px 20px;
+  background: #d0021b;
+  color: #ffffff;
+  right: 0;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 0px 4px 0px 0px;
+}
+
+.hextra-tour-card .trip-content {
+  padding: 10px;
+  display: grid;
+  align-items: start;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0px;
+}
+
+.hextra-tour-card .type {
+  font-size: 12px;
+  color: #979797;
+  line-height: 1.4rem;
+}
+.hextra-tour-card .name {
+  font-size: 16px;
+  margin: 0 0 0.25rem 0;
+  width: 100%;
+  height: 44px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.hextra-tour-card .duration-destinations {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #4c4f56;
+  padding: 0;
+  margin-bottom: 0.25rem;
+  white-space: normal;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.hextra-tour-card .trip-content-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-row-gap: 10px;
+  align-items: center;
+  height: 101px;
+}
+.hextra-tour-card .extra-content {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+}
+.hextra-tour-card .extra-content dl {
+  line-height: 1.4em;
+  font-size: 12px !important;
+  margin: 0px;
+}
+
+.hextra-tour-card .extra-content dt,
+.hextra-tour-card .extra-content dd {
+  display: inline-block;
+  line-height: 1em;
+  padding-bottom: 0.5em;
+  color: #313b42;
+}
+
+.hextra-tour-card .pricing {
+  grid-column: 4 / span 2;
+  grid-row: 1;
+}
+
+.hextra-tour-card .advertised-price {
+  font-size: 11px;
+  margin-bottom: 0;
+  text-align: right;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+}
+.hextra-tour-card .amount {
+  font-size: 24px;
+  line-height: 22px;
+  font-weight: bold;
+  display: inline-block;
+}
+.hextra-tour-card .previous-price {
+  display: block;
+}
+.hextra-tour-card .advertised-date,
+.hextra-tour-card .previous-price {
+  font-weight: normal;
+  color: #414042;
+}
+.hextra-tour-card .previous-price .amount {
+  font-size: 11px;
+  line-height: 0;
+  text-decoration: line-through;
+  margin-left: 5px;
+  font-weight: normal;
+  color: #414043 !important;
+}
+.hextra-tour-card .current-price {
+  color: #d0021b;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.hextra-tour-card .search-btn {
+  background: #d0021b;
+  border-radius: 7px;
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  grid-column: 1 / 7;
+}

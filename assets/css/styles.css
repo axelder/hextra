@@ -1,14 +1,16 @@
-@import url("tailwind.css");
-@import url("typography.css");
-@import url("highlight.css");
-@import url("components/cards.css");
-@import url("components/steps.css");
-@import url("components/search.css");
-@import url("components/sidebar.css");
-@import url("components/navbar.css");
-@import url("components/scrollbar.css");
-@import url("components/code-copy.css");
-@import url("components/hextra/feature-grid.css");
+@import "tailwind.css";
+
+@import "typography.css";
+@import "highlight.css";
+@import "tour/index.css";
+@import "components/cards.css";
+@import "components/steps.css";
+@import "components/search.css";
+@import "components/sidebar.css";
+@import "components/navbar.css";
+@import "components/scrollbar.css";
+@import "components/code-copy.css";
+@import "components/hextra/feature-grid.css";
 
 html {
   @apply hx-text-base hx-antialiased;

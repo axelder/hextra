@@ -1,0 +1,108 @@
+.tour-single-page {
+  padding: 48px 0px;
+}
+.max-width-700 {
+  max-width: 700px;
+  width: 100%;
+}
+.tour-single-page .title {
+  font-size: 65px;
+  font-weight: 700;
+  margin-bottom: 0;
+  padding: 0;
+  text-align: left;
+  text-transform: none;
+  color: #4c4f56;
+}
+.tour-single-page .duration {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 20px 0;
+  text-transform: none;
+}
+.tour-single-page .tabs {
+  margin: 40px 0;
+  width: 380px;
+}
+
+.tour-single-page .tabs li {
+  color: #039cda;
+  text-decoration: none;
+  font-weight: 400;
+  display: inline-block;
+  border-right: 1px solid #4c4f56;
+  margin-right: 0.5em;
+  padding-right: 0.5em;
+  line-height: 0.9em;
+  border-bottom: 2px solid transparent;
+  transition-duration: 300ms;
+}
+.tour-single-page .tabs .tab:hover {
+  color: #c7c7c7;
+}
+.tour-single-page .tabs .tab.active {
+  border-bottom: 2px solid;
+  font-weight: 900;
+  padding-bottom: 0.1em;
+}
+.tour-hero .desc {
+  line-height: 1.75em;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+.tour-question h3 {
+  color: #47268d;
+  font-size: 18px;
+  font-weight: normal;
+}
+.tour-question {
+  margin-bottom: 20px;
+}
+.tour-question .type {
+  color: #4c4f56;
+  font-size: 18px;
+}
+.tour-question p {
+  font-size: 14px;
+  margin: 0;
+  font-style: italic;
+}
+.visa-req {
+  border-left: 1px solid #eee;
+  padding-left: 30px;
+}
+.tour-question a {
+  color: #039cda;
+  line-height: 1.75em;
+  text-decoration: none;
+  font-size: 14px;
+}
+.tour-question a:hover {
+  color: #c7c7c7;
+  text-decoration: underline;
+}
+.hx-col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.hx-row-span-2 {
+  grid-row: span 2 / span 2;
+}
+.hx-grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.whats-included h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.whats-included .item h3 {
+  color: #47268d;
+  font-weight: bold;
+  font-size: 14px;
+}
+.whats-included .item span {
+  color: #4c4f56;
+  font-weight: normal;
+}
