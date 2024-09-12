@@ -1,12 +1,12 @@
 .tour-single-page {
-  padding: 48px 0px;
+  padding: 48px 20px;
 }
 .max-width-700 {
   max-width: 700px;
   width: 100%;
 }
 .tour-single-page .title {
-  font-size: 65px;
+  font-size: clamp(34px, 5vw, 65px);
   font-weight: 700;
   margin-bottom: 0;
   padding: 0;
@@ -105,4 +105,33 @@
 .whats-included .item span {
   color: #4c4f56;
   font-weight: normal;
+}
+.hextra-w-fit {
+  width: fit-content;
+}
+.hextra-pt-0 {
+  padding-top: 0;
+}
+
+.hextra-sidebar {
+  width: 33.33333%;
+}
+@media (max-width: 1024px) {
+  .tour-hero {
+    flex-direction: column;
+  }
+  .max-width-700 {
+    max-width: 100%;
+    width: 100%;
+  }
+  .hextra-sidebar {
+    max-width: 580px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+@media (min-width: 768px) {
+  .md\:hx-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }

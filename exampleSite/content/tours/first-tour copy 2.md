@@ -13,14 +13,30 @@ date_of_departure: "Dec 15, 2024"
 tour_code: "AJDJ"
 physical_grading: "3 - Average"
 image: "/images/third_tour.png"
+locations:
+  - "Hiroshima "
+  - "Miyajima Island excursion"
+  - "Tokyo"
+
+gallery:
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
 ---
 
-## Overview
+{{< tabs items="Meals,Accommodations,Services" >}}
 
-This is a detailed description of the first tour.
+{{< tab >}}**Meals**: 3 breakfasts, 2 dinners.
+**-**
+Allow USD390-510 for meals not included.
 
-## Itinerary
+{{< /tab >}}
+{{< tab >}}**Transportation**: Bullet train, tram, ferry, public bus, walking.
+{{< /tab >}}
+{{< tab >}}**Staff**: CEO (Chief Experience Officer) throughout.{{< /tab >}}
 
-- Day 1: Arrival
-- Day 2: Sightseeing
-- Day 3: Departure
+{{< /tabs >}}

@@ -1,32 +1,67 @@
 {{ define "main" }}
-<section class="tour-single-page hx-max-w-6xl hx-mx-auto p-6">
+<section class="tour-single-page hx-max-w-6xl hx-mx-auto hx-p-6">
+   <!-- Breadcrumbs -->
+   <nav class="breadcrumbs hx-mb-4">
+    <ul class="hx-flex hx-items-center hx-text-sm">
+      <li><a href="/" class="hx-text-blue-600 hover:underline">Home</a></li>
+      <li class="hx-mx-2">/</li>
+      <li><a href="/tours" class="hx-text-blue-600 hover:underline">Tours</a></li>
+      <li class="hx-mx-2">/</li>
+      <li>{{ .Params.tour_title }}</li>
+    </ul>
+  </nav>
   <!-- Tour Title -->
   <h1 class="hx-text-4xl hx-font-bold hx-mb-4 title">{{ .Params.tour_title }}</h1>
-  
-      
-      
+
+
+
+
+
       <!-- Tour Duration & Destination -->
       <p class="hx-text-lg hx-mb-6 duration">{{ .Params.no_of_days }} days, {{ .Params.country }}</p>
+      <!-- {{ with .Params.locations }}
+      <ul class="hx-list-disc hx-list-inside ">
+        {{ range . }}
+          <li class="">{{ . }}</li>
+        {{ end }}
+      </ul>
+    {{ end }} -->
+    <div class="itinerary-content">
+      {{ range .Params.itinerary }}
+        <div class="hx-mb-6">
+          <h3 class="hx-text-xl hx-font-bold">Day {{ .day }}: {{ .location }}</h3>
+          <p>{{ .description }}</p>
+        </div>
+      {{ end }}
+    </div>
+       <!-- Gallery Section -->
+  <div class="gallery-section hx-mt-10 hx-mb-10">
+    <!-- <h2 class="hx-text-2xl hx-font-bold hx-mb-4 hx-text-center">More from Japan Express – Osaka to Tokyo</h2> -->
+    {{ if .Params.gallery }}
+        <div class="hx-grid md:hx-grid-cols-4 hx-gap-2">
+            {{ range $index, $element := first 5 .Params.gallery }}
+
+                    <img class="hx-w-full hx-h-full hx-object-cover hx-rounded gallery-item {{ if eq $index 0 }}hx-col-span-2 hx-row-span-2{{ end }}" src="{{ $element.image }}" alt="Gallery Image">
+
+            {{ end }}
+        </div>
+    {{ else }}
+        <p>No gallery images available.</p>
+    {{ end }}
+</div>
   <!-- Hero Section -->
-  <div class="tour-hero hx-flex hx-justify-between hx-gap-6">
+  <div class="tour-hero hx-flex hx-justify-between hx-gap-6 hx-relative">
     <div class="max-width-700">
       <!-- Tour Image -->
-      {{ with .Params.image }}
+      <!-- {{ with .Params.image }}
         <img class="hx-w-full hx-h-80 hx-object-cover hx-mb-4" src="{{ . }}" alt="Tour Image">
-      {{ end }}
-      <ul class="hx-flex hx-items-center tabs">
-       <li> <a href="#trip-details" class="tab active">Overview</a></li>
-       <li>
-        <a href="#Itinerary"  class="tab">Full itenrary</a>
-       </li>
-       <li> <a href="#included"  class="tab">Tour details</a></li>
-      </ul>
+      {{ end }} -->
+      {{ .Content }}
       <!-- Overview -->
-     <p class="desc">From the Buddhist monks of Kōyasan to the high rollers of Tokyo, see the many faces of Japan on this condensed tour beginning in Osaka. Savour the region’s culinary delicacies and the beautiful views at Mt Fuji. You'll stay in a mountain temple and really soak up local culture in onsen hot springs. A great combination of the traditional and the contemporary, this adventure provides a taste of the rich culture of Japan.</p> 
       <!-- Trip Details -->
   <div class="trip-details hx-mt-10" id="trip-details">
-    <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Is this tour for me?</h2>
-    <div class="hx-flex hx-justify-between hx-gap-6">
+    <!-- <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Is this tour for me?</h2> -->
+    <!-- <div class="hx-flex hx-justify-between hx-gap-6">
      <div class="tour-wrapper">
       <div class="tour-question">
         <h3 class="hx-text-lg hx-font-bold">Travel Style: <span class="type">{{ .Params.tour_type }}</span></h3>
@@ -54,142 +89,119 @@
         </a>
       </div>
      </div>
-    </div>
-    <div class="tour-question hx-mt-5">
-      <p class="type">Alternative Trips</p> 
-      
+    </div> -->
+    <!-- <div class="tour-question hx-mt-5">
+      <p class="type">Alternative Trips</p>
+
       <a href="/">
         Travel in winter instead and learn more about Japan's fantastic winter festivals.
       </a>
-    </div>
+    </div> -->
   </div>
     </div>
-    
+
     <!-- Sidebar with Pricing -->
-    <div class="hx-w-1/3 hx-bg-gray-100 hx-p-4 hx-rounded-lg">
-      <div class="hx-bg-primary hx-text-white hx-p-2 hx-rounded hx-mb-4 text-center">TOP</div>
-      <p class="hx-text-3xl hx-font-bold hx-mb-2">${{ .Params.current_price }}</p>
-      <p class="hx-text-lg hx-line-through hx-mb-4">${{ .Params.sale_price }}</p>
-      <p>Valid for {{ .Params.date_of_departure }}</p>
-      <button class="hx-bg-blue-600 hx-text-white hx-py-2 hx-px-4 hx-rounded hx-mt-6">Book Now</button>
-      <div class="hx-mt-4">
-        <h3 class="hx-text-xl hx-font-bold">Special Offers</h3>
-        <p>Book before {{ .Params.special_offer_date }}</p>
+    <div class=" hx-w-1/3 hextra-sidebar">
+      <div class="  hx-p-4 hx-rounded-lg hx-bg-gray-100  hx-sticky hx-top-5 hextra-top-60 hextra-pt-0">
+        <div class="hx-bg-primary hx-text-white hx-p-2 hx-px-6 hx-rounded hx-mb-4 text-center hx-bg-blue-600 hextra-w-fit hx-text-sm hx-leading-normal">{{ .Params.tour_tag }}</div>
+        <p class="hx-text-4xl hx-font-bold hx-mb-2">${{ .Params.current_price }}</p>
+        <p class="hx-text-lg hx-line-through hx-mb-4">${{ .Params.sale_price }}</p>
+        <p>Valid for {{ .Params.date_of_departure }}</p>
+        <button class="hx-bg-blue-600 hx-text-white hx-py-2 hx-px-4 hx-rounded hx-mt-6 hx-w-full">Get in touch</button>
+        <div class="hx-mt-4">
+          <h3 class="hx-text-xl hx-font-bold">Special Offers</h3>
+          <p>Book before {{ .Params.special_offer_date }}</p>
+        </div>
       </div>
     </div>
   </div>
 
- 
 
-  <!-- Itinerary -->
-  <div class="itinerary hx-mt-10" id="Itinerary">
-    <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Itinerary</h2>
-    <div class="itinerary-content">
-      {{ range .Params.itinerary }}
-        <div class="hx-mb-6">
-          <h3 class="hx-text-xl hx-font-bold">Day {{ .day }}: {{ .location }}</h3>
-          <p>{{ .description }}</p>
-        </div>
-      {{ end }}
-    </div>
-  </div>
+
+
 
   <!-- What's Included -->
-  <div class="whats-included hx-mt-10" id="included">
+  <!-- <div class="whats-included hx-mt-10" id="included">
     <h2 class="hx-text-2xl hx-font-bold hx-mb-4">What's Included</h2>
     <ul class="hx-list-disc hx-list-inside">
       {{ range .Params.inclusions }}
-        <li>{{ . }}</li>
+        <li>{{ .item }}</li>
       {{ end }}
     </ul>
-  </div>
+  </div> -->
 
-  <!-- Gallery Section -->
-  <div class="gallery-section hx-mt-10">
-    <h2 class="hx-text-2xl hx-font-bold hx-mb-4 hx-text-center">More from Japan Express – Osaka to Tokyo</h2>
-    {{ if .Params.gallery }}
-        <div class="hx-grid hx-grid-cols-4 hx-gap-2">
-            {{ range $index, $element := first 5 .Params.gallery }}
-                 
-                    <img class="hx-w-full hx-h-full hx-object-cover hx-rounded gallery-item {{ if eq $index 0 }}hx-col-span-2 hx-row-span-2{{ end }}" src="{{ $element.image }}" alt="Gallery Image">
-                 
-            {{ end }}
-        </div>
-    {{ else }}
-        <p>No gallery images available.</p>
-    {{ end }}
-</div>
+
 
   <section class="hx-max-w-7xl hx-mx-auto hx-px-6 hx-py-12 whats-included">
-    <h2 class="hx-text-3xl hx-font-bold hx-mb-4">What's Included</h2>
-  
-   <ul class="hx-list-disc hx-list-inside hx-mb-6">
+    <!-- <h2 class="hx-text-3xl hx-font-bold hx-mb-4">What's Included</h2> -->
+
+   <!-- <ul class="hx-list-disc hx-list-inside hx-mb-6">
     {{ with .Params.whats_included.welcome_moment }}
-    <li class="hx-mb-6 item hx-flex"> <!-- Welcome Moment -->
-     
-      
+    <li class="hx-mb-6 item hx-flex">
+
+
         <h3 class="hx-text-xl hx-font-semibold ">Your Welcome Moment:  <span>{{ . }}</span></h3>
-        
+
     {{ end }}</li>
     {{ with .Params.whats_included.local_living_moment }}
- 
+
   <li class="hx-mb-6 item hx-flex">
-   <!-- Local Living Moment -->
-  
-      
+
+
+
        <h3 class="hx-text-xl hx-font-semibold">Your Local Living Moment: <span>{{ . }}</span></h3>
-       
+
    {{ end }}
   </li>
-   </ul>
-  
+   </ul> -->
+
     <!-- Activities List -->
-    {{ with .Params.whats_included.activities }}
+    <!-- {{ with .Params.whats_included.activities }}
       <ul class="hx-list-disc hx-list-inside hx-mb-6">
         {{ range . }}
           <li class="hx-mb-4">{{ . }}</li>
         {{ end }}
       </ul>
-    {{ end }}
-  
+    {{ end }} -->
+
     <!-- Accommodations -->
-    {{ with .Params.whats_included.accommodations }}
+    <!-- {{ with .Params.whats_included.accommodations }}
       <div class="hx-mb-6">
         <h3 class="hx-text-xl hx-font-semibold">Accommodations:</h3>
         <p>{{ . }}</p>
       </div>
-    {{ end }}
-  
+    {{ end }} -->
+
     <!-- Meals -->
-    {{ with .Params.whats_included.meals }}
+    <!-- {{ with .Params.whats_included.meals }}
       <div class="hx-mb-6">
         <h3 class="hx-text-xl hx-font-semibold">Meals:</h3>
         {{ range . }}
           <p>{{ . }}</p>
         {{ end }}
       </div>
-    {{ end }}
-  
+    {{ end }} -->
+
     <!-- Transportation -->
-    {{ with .Params.whats_included.transportation }}
+    <!-- {{ with .Params.whats_included.transportation }}
       <div class="hx-mb-6">
         <h3 class="hx-text-xl hx-font-semibold">Transportation:</h3>
         <p>{{ . }}</p>
       </div>
-    {{ end }}
-  
+    {{ end }} -->
+
     <!-- Staff & Experts -->
-    {{ with .Params.whats_included.staff }}
+    <!-- {{ with .Params.whats_included.staff }}
       <div class="hx-mb-6">
         <h3 class="hx-text-xl hx-font-semibold">Staff & Experts:</h3>
         <p>{{ . }}</p>
       </div>
-    {{ end }}
+    {{ end }} -->
   </section>
-  
+
 
   <!-- Reviews -->
-  <div class="reviews hx-mt-10">
+  <!-- <div class="reviews hx-mt-10">
     <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Reviews</h2>
     <div class="review-content">
       {{ range .Params.reviews }}
@@ -199,6 +211,6 @@
         </div>
       {{ end }}
     </div>
-  </div>
+  </div> -->
 </section>
 {{ end }}

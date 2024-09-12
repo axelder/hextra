@@ -13,14 +13,31 @@ date_of_departure: "Dec 07, 2024"
 tour_code: "AJTO"
 physical_grading: "2 - Light"
 image: "/images/fifth_tour.png"
+locations:
+  - "Hiroshima "
+  - "Miyajima Island excursion"
+  - "Tokyo"
+gallery:
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/card-image-unprocessed.jpg"
 ---
 
-## Overview
+---
 
-This is a detailed description of the first tour.
+{{< tabs items="Meals,Accommodations,Services" >}}
 
-## Itinerary
+{{< tab >}}**Meals**: 3 breakfasts, 2 dinners.
+**-**
+Allow USD390-510 for meals not included.
 
-- Day 1: Arrival
-- Day 2: Sightseeing
-- Day 3: Departure
+{{< /tab >}}
+{{< tab >}}**Transportation**: Bullet train, tram, ferry, public bus, walking.
+{{< /tab >}}
+{{< tab >}}**Staff**: CEO (Chief Experience Officer) throughout.{{< /tab >}}
+
+{{< /tabs >}}

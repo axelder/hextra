@@ -1,9 +1,9 @@
 {{ define "main" }}
 
-<section class="tours-list hx-max-w-7xl hx-mx-auto p-6">
+<section class="tours-list hx-max-w-7xl hx-mx-auto hx-p-6">
   <h1 class="hx-text-4xl hx-font-bold hx-mb-6">{{ .Pages | len }} tours found</h1>
-  
-  <div class="hx-flex hx-flex-wrap">
+
+  <div class="hx-flex hx-flex-wrap hx-justify-center hx-gap-6">
     {{ range .Pages }}
       <div class="hextra-tour-card">
         <a href="{{ .Permalink }}">
@@ -11,14 +11,14 @@
           {{ with .Params.tour_tag }}
           <p class="tag">{{ . }}</p>
         {{ end }}
-         
+
           <!-- Image -->
           {{ with .Params.image }}
             <img class="hx-w-full hx-h-48 hx-object-cover hx-mb-4" src="{{ . }}">
           {{ end }}
       <div class="trip-content">
         <div>
-          <p class="type"> {{ .Params.tour_category }}</p>
+          <!-- <p class="type"> {{ .Params.tour_category }}</p> -->
           <h2 class="name">{{ .Params.tour_title }}</h2>
           <p class="duration-destinations"><b>{{ .Params.no_of_days }} Days</b> in {{ .Params.country }}</p>
         </div>
@@ -27,12 +27,18 @@
         <div class="trip-content-bottom">
           <div class="extra-content">
             <dl>
-              <dt>Physical Grading</dt>
-              <dd>{{ .Params.physical_grading }}</dd> <br>
+              <!-- <dd>{{ .Params.physical_grading }}</dd> <br>
               <dt>Tour Type</dt>
               <dd>{{ .Params.tour_type }}</dd><br>
               <dt>Tour code</dt>
-              <dd>{{ .Params.tour_code }}</dd>
+              <dd>{{ .Params.tour_code }}</dd> -->
+              {{ with .Params.locations }}
+      <ul class="hx-list-none hx-list-inside ">
+        {{ range . }}
+          <li class="">{{ . }}</li>
+        {{ end }}
+      </ul>
+    {{ end }}
             </dl>
           </div>
           <div class="pricing">
@@ -40,26 +46,26 @@
               {{ with .Params.sale_price }}
               <span class="previous-price">
                 <span class="amount">${{ . }}</span>
-              </span> 
+              </span>
               {{ end }}
               <span class="current-price">
-                <span class="from-amount">from</span> 
+                <span class="from-amount">from</span>
                 <span class="amount">${{ .Params.current_price }}</span>
-              </span> 
-              <span class="advertised-date">
-                on <span class="date">{{ .Params.date_of_departure }}</span>
               </span>
+              <!-- <span class="advertised-date">
+                on <span class="date">{{ .Params.date_of_departure }}</span>
+              </span> -->
             </p>
           </div>
           <button href="{{ .Permalink }}" class="mt-4  search-btn">View tour</button>
         </div>
 
 
-        
 
-        
+
+
       </div>
-         
+
       </div>
     {{ end }}
   </div>

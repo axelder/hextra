@@ -3,6 +3,7 @@ title: "Japan Express: Osaka to Tokyo"
 tour_title: "Japan Express"
 no_of_days: 9
 country: "Japan"
+tour_tag: "On Sale"
 tour_type: "Classic"
 tour_category: "Culture"
 physical_grading: 3
@@ -47,6 +48,11 @@ inclusions:
   - item: "Daily breakfast"
   - item: "Entrance fees to select attractions"
 
+locations:
+  - "Hiroshima "
+  - "Miyajima Island excursion"
+  - "Tokyo"
+
 reviews:
   - reviewer_name: "John Doe"
     date: "2023-05-21"
@@ -64,3 +70,16 @@ gallery:
   - image: "/images/card-image-unprocessed.jpg"
   - image: "/images/card-image-unprocessed.jpg"
 ---
+
+{{< tabs items="Meals,Accommodations,Services" >}}
+
+{{< tab >}}**Meals**: 3 breakfasts, 2 dinners.
+**-**
+Allow USD390-510 for meals not included.
+
+{{< /tab >}}
+{{< tab >}}**Transportation**: Bullet train, tram, ferry, public bus, walking.
+{{< /tab >}}
+{{< tab >}}**Staff**: CEO (Chief Experience Officer) throughout.{{< /tab >}}
+
+{{< /tabs >}}
