@@ -63,7 +63,7 @@ reviews:
 
 gallery:
   - image: "/images/card-image-unprocessed.jpg"
-  - image: "/images/card-image-unprocessed.jpg"
+  - image: "/images/fifth_tour.png"
   - image: "/images/card-image-unprocessed.jpg"
   - image: "/images/card-image-unprocessed.jpg"
   - image: "/images/card-image-unprocessed.jpg"

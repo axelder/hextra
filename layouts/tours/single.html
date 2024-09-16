@@ -13,96 +13,91 @@
   <!-- Tour Title -->
   <h1 class="hx-text-4xl hx-font-bold hx-mb-4 title">{{ .Params.tour_title }}</h1>
 
+  <!-- Tour Duration & Destination -->
+  <p class="hx-text-lg hx-mb-6 duration">{{ .Params.no_of_days }} days, {{ .Params.country }}</p>
 
-
-
-
-      <!-- Tour Duration & Destination -->
-      <p class="hx-text-lg hx-mb-6 duration">{{ .Params.no_of_days }} days, {{ .Params.country }}</p>
-      <!-- {{ with .Params.locations }}
-      <ul class="hx-list-disc hx-list-inside ">
-        {{ range . }}
-          <li class="">{{ . }}</li>
-        {{ end }}
-      </ul>
-    {{ end }} -->
-    <div class="itinerary-content">
-      {{ range .Params.itinerary }}
-        <div class="hx-mb-6">
-          <h3 class="hx-text-xl hx-font-bold">Day {{ .day }}: {{ .location }}</h3>
-          <p>{{ .description }}</p>
-        </div>
-      {{ end }}
-    </div>
-       <!-- Gallery Section -->
-  <div class="gallery-section hx-mt-10 hx-mb-10">
-    <!-- <h2 class="hx-text-2xl hx-font-bold hx-mb-4 hx-text-center">More from Japan Express – Osaka to Tokyo</h2> -->
-    {{ if .Params.gallery }}
-        <div class="hx-grid md:hx-grid-cols-4 hx-gap-2">
-            {{ range $index, $element := first 5 .Params.gallery }}
-
-                    <img class="hx-w-full hx-h-full hx-object-cover hx-rounded gallery-item {{ if eq $index 0 }}hx-col-span-2 hx-row-span-2{{ end }}" src="{{ $element.image }}" alt="Gallery Image">
-
-            {{ end }}
-        </div>
-    {{ else }}
-        <p>No gallery images available.</p>
+  <!-- Itinerary Content -->
+  <div class="itinerary-content">
+    {{ range .Params.itinerary }}
+      <div class="hx-mb-6">
+        <h3 class="hx-text-xl hx-font-bold">Day {{ .day }}: {{ .location }}</h3>
+        <p>{{ .description }}</p>
+      </div>
     {{ end }}
+  </div>
+
+ <!-- Gallery Section -->
+<div class="gallery-section hx-mt-10 hx-mb-10">
+  {{ if .Params.gallery }}
+      <div class="gallery-wrapper">
+          <div class="gallery-grid md:hx-grid-cols-4 hx-gap-2">
+              {{ $images := .Params.gallery }}
+              {{ $count := len $images }}
+              {{ range $index, $element := first 5 $images }}
+                  <div class="relative {{ if eq $index 0 }}hx-col-span-2 hx-row-span-2{{ end }}">
+                      <img class="hx-w-full hx-h-full hx-object-cover hx-rounded gallery-item" src="{{ $element.image }}" alt="Gallery Image" data-index="{{ $index }}">
+                      {{ if and (eq $index 4) (gt $count 5) }}
+                          <div class="overlay" data-index="{{ $index }}">
+                              <span class="overlay-text">+{{ sub $count 5 }} more</span>
+                          </div>
+                      {{ end }}
+                  </div>
+              {{ end }}
+          </div>
+
+          <!-- Slider for smaller screens -->
+          <div class="slider-container" style="display: none;">
+              <div class="slider">
+                  {{ range .Params.gallery }}
+                      <div class="slide">
+                          <img class="hx-w-full hx-h-full hx-object-cover hx-rounded" src="{{ .image }}" alt="Gallery Image">
+                      </div>
+                  {{ end }}
+              </div>
+              <button class="slider-prev">&lt;</button>
+              <button class="slider-next">&gt;</button>
+          </div>
+      </div>
+  {{ else }}
+      <p>No gallery images available.</p>
+  {{ end }}
 </div>
+
+<!-- Fullscreen Modal -->
+<!-- Fullscreen Modal -->
+<div class="modal" id="fullscreen-modal" style="display: none;">
+  <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div class="modal-slider">
+          {{ range .Params.gallery }}
+              <div class="modal-slide">
+                  <img class="hx-w-full hx-h-full hx-object-cover hx-rounded" src="{{ .image }}" alt="Gallery Image">
+              </div>
+          {{ end }}
+      </div>
+      <button class="modal-prev">&lt;</button>
+      <button class="modal-next">&gt;</button>
+  </div>
+</div>
+
+
+
+
+
+
   <!-- Hero Section -->
   <div class="tour-hero hx-flex hx-justify-between hx-gap-6 hx-relative">
     <div class="max-width-700">
-      <!-- Tour Image -->
-      <!-- {{ with .Params.image }}
-        <img class="hx-w-full hx-h-80 hx-object-cover hx-mb-4" src="{{ . }}" alt="Tour Image">
-      {{ end }} -->
       {{ .Content }}
       <!-- Overview -->
-      <!-- Trip Details -->
-  <div class="trip-details hx-mt-10" id="trip-details">
-    <!-- <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Is this tour for me?</h2> -->
-    <!-- <div class="hx-flex hx-justify-between hx-gap-6">
-     <div class="tour-wrapper">
-      <div class="tour-question">
-        <h3 class="hx-text-lg hx-font-bold">Travel Style: <span class="type">{{ .Params.tour_type }}</span></h3>
-        <p>{{ .Params.travel_style_desc }}</p>
+      <div class="trip-details hx-mt-10" id="trip-details">
+        <!-- Trip Details Here -->
       </div>
-      <div class="tour-question">
-        <h3 class="hx-text-lg hx-font-bold">Service Level: <span class="type">{{ .Params.service_level }}</span></h3>
-        <p>{{ .Params.service_level_desc }}</p>
-      </div>
-      <div class="tour-question">
-        <h3 class="hx-text-lg hx-font-bold">Physical Grading: <span class="type">{{ .Params.physical_grading }}</span></h3>
-        <p>{{ .Params.physical_grading_desc }}</p>
-      </div>
-      <div class="tour-question">
-        <h3 class="hx-text-lg hx-font-bold">Trip Type: <span class="type">{{ .Params.tour_type }}</span></h3>
-        <p>{{ .Params.tour_type_desc }}</p>
-      </div>
-     </div>
-     <div class="visa-req">
-      <div class="tour-question">
-        <h3 class="hx-text-lg hx-font-bold">Physical Grading: <span class="type">{{ .Params.physical_grading }}</span></h3>
-        <p>{{ .Params.physical_grading_desc }}</p>
-        <a href="/">
-          View our Entry Requirements tool
-        </a>
-      </div>
-     </div>
-    </div> -->
-    <!-- <div class="tour-question hx-mt-5">
-      <p class="type">Alternative Trips</p>
-
-      <a href="/">
-        Travel in winter instead and learn more about Japan's fantastic winter festivals.
-      </a>
-    </div> -->
-  </div>
     </div>
 
     <!-- Sidebar with Pricing -->
-    <div class=" hx-w-1/3 hextra-sidebar">
-      <div class="  hx-p-4 hx-rounded-lg hx-bg-gray-100  hx-sticky hx-top-5 hextra-top-60 hextra-pt-0">
+    <div class="hx-w-1/3 hextra-sidebar">
+      <div class="hx-p-4 hx-rounded-lg hx-bg-gray-100 hx-sticky hx-top-5 hextra-top-60 hextra-pt-0">
         <div class="hx-bg-primary hx-text-white hx-p-2 hx-px-6 hx-rounded hx-mb-4 text-center hx-bg-blue-600 hextra-w-fit hx-text-sm hx-leading-normal">{{ .Params.tour_tag }}</div>
         <p class="hx-text-4xl hx-font-bold hx-mb-2">${{ .Params.current_price }}</p>
         <p class="hx-text-lg hx-line-through hx-mb-4">${{ .Params.sale_price }}</p>
@@ -116,101 +111,129 @@
     </div>
   </div>
 
-
-
-
-
-  <!-- What's Included -->
-  <!-- <div class="whats-included hx-mt-10" id="included">
-    <h2 class="hx-text-2xl hx-font-bold hx-mb-4">What's Included</h2>
-    <ul class="hx-list-disc hx-list-inside">
-      {{ range .Params.inclusions }}
-        <li>{{ .item }}</li>
-      {{ end }}
-    </ul>
-  </div> -->
-
-
-
+  <!-- What's Included Section -->
   <section class="hx-max-w-7xl hx-mx-auto hx-px-6 hx-py-12 whats-included">
-    <!-- <h2 class="hx-text-3xl hx-font-bold hx-mb-4">What's Included</h2> -->
-
-   <!-- <ul class="hx-list-disc hx-list-inside hx-mb-6">
-    {{ with .Params.whats_included.welcome_moment }}
-    <li class="hx-mb-6 item hx-flex">
-
-
-        <h3 class="hx-text-xl hx-font-semibold ">Your Welcome Moment:  <span>{{ . }}</span></h3>
-
-    {{ end }}</li>
-    {{ with .Params.whats_included.local_living_moment }}
-
-  <li class="hx-mb-6 item hx-flex">
-
-
-
-       <h3 class="hx-text-xl hx-font-semibold">Your Local Living Moment: <span>{{ . }}</span></h3>
-
-   {{ end }}
-  </li>
-   </ul> -->
-
-    <!-- Activities List -->
-    <!-- {{ with .Params.whats_included.activities }}
-      <ul class="hx-list-disc hx-list-inside hx-mb-6">
-        {{ range . }}
-          <li class="hx-mb-4">{{ . }}</li>
-        {{ end }}
-      </ul>
-    {{ end }} -->
-
-    <!-- Accommodations -->
-    <!-- {{ with .Params.whats_included.accommodations }}
-      <div class="hx-mb-6">
-        <h3 class="hx-text-xl hx-font-semibold">Accommodations:</h3>
-        <p>{{ . }}</p>
-      </div>
-    {{ end }} -->
-
-    <!-- Meals -->
-    <!-- {{ with .Params.whats_included.meals }}
-      <div class="hx-mb-6">
-        <h3 class="hx-text-xl hx-font-semibold">Meals:</h3>
-        {{ range . }}
-          <p>{{ . }}</p>
-        {{ end }}
-      </div>
-    {{ end }} -->
-
-    <!-- Transportation -->
-    <!-- {{ with .Params.whats_included.transportation }}
-      <div class="hx-mb-6">
-        <h3 class="hx-text-xl hx-font-semibold">Transportation:</h3>
-        <p>{{ . }}</p>
-      </div>
-    {{ end }} -->
-
-    <!-- Staff & Experts -->
-    <!-- {{ with .Params.whats_included.staff }}
-      <div class="hx-mb-6">
-        <h3 class="hx-text-xl hx-font-semibold">Staff & Experts:</h3>
-        <p>{{ . }}</p>
-      </div>
-    {{ end }} -->
+    <!-- What's Included Here -->
   </section>
 
-
-  <!-- Reviews -->
-  <!-- <div class="reviews hx-mt-10">
-    <h2 class="hx-text-2xl hx-font-bold hx-mb-4">Reviews</h2>
-    <div class="review-content">
-      {{ range .Params.reviews }}
-        <div class="hx-mb-4">
-          <p><b>{{ .reviewer_name }}</b> ({{ .date }})</p>
-          <p>{{ .content }}</p>
-        </div>
-      {{ end }}
-    </div>
-  </div> -->
+  <!-- Reviews Section -->
+  <!-- Reviews Here -->
 </section>
+
+<script>
+  (function() {
+      console.log('Script running');
+
+      // Initialize variables for the slider and modal
+      const sliderContainer = document.querySelector('.slider-container');
+      const galleryGrid = document.querySelector('.gallery-grid');
+      const slider = document.querySelector('.slider');
+      const slides = slider ? slider.querySelectorAll('.slide') : [];
+      const prevButton = document.querySelector('.slider-prev');
+      const nextButton = document.querySelector('.slider-next');
+      const overlays = document.querySelectorAll('.overlay');
+      const modal = document.getElementById('fullscreen-modal');
+      const modalSlides = modal ? modal.querySelectorAll('.modal-slide') : [];
+      const modalPrevButton = modal ? modal.querySelector('.modal-prev') : null;
+      const modalNextButton = modal ? modal.querySelector('.modal-next') : null;
+      const modalCloseButton = modal ? modal.querySelector('.modal-close') : null;
+      let index = 0;
+
+      // Function to show a specific slide in the main slider
+      function showSlide(n) {
+          if (slides.length === 0) return;
+
+          index = (n + slides.length) % slides.length; // Handle looping
+          const offset = -index * 100;
+          slider.style.transform = `translateX(${offset}%)`;
+      }
+
+      // Function to show a specific slide in the modal slider
+      function showModalSlide(n) {
+          if (modalSlides.length === 0) return;
+
+          index = (n + modalSlides.length) % modalSlides.length; // Handle looping
+          modalSlides.forEach((slide, i) => {
+              slide.style.display = i === index ? 'block' : 'none';
+          });
+      }
+
+      // Event handler for slider navigation buttons
+      if (prevButton) {
+          prevButton.onclick = function() {
+              showSlide(index - 1);
+          };
+      }
+
+      if (nextButton) {
+          nextButton.onclick = function() {
+              showSlide(index + 1);
+          };
+      }
+
+      // Event handler for modal overlay clicks
+      overlays.forEach((overlay, i) => {
+          overlay.onclick = function() {
+              index = i; // Set the initial index based on the clicked overlay
+              showModalSlide(index);
+              modal.style.display = 'flex'; // Show the modal
+          };
+      });
+
+      // Event handlers for modal navigation buttons
+      if (modalPrevButton) {
+          modalPrevButton.onclick = function() {
+              showModalSlide(index - 1); // Show the previous slide in the modal
+          };
+      }
+
+      if (modalNextButton) {
+          modalNextButton.onclick = function() {
+              showModalSlide(index + 1); // Show the next slide in the modal
+          };
+      }
+
+      // Event handler to close the modal
+      if (modalCloseButton) {
+          modalCloseButton.onclick = function() {
+              modal.style.display = 'none'; // Hide the modal
+          };
+      }
+
+      // Close modal when clicking outside of the content
+      if (modal) {
+          modal.onclick = function(event) {
+              if (event.target === modal) {
+                  modal.style.display = 'none'; // Hide the modal
+              }
+          };
+      }
+
+      // Function to handle responsive design changes
+      function handleResize() {
+          if (window.innerWidth >= 768) {
+              sliderContainer.style.display = 'none';
+              galleryGrid.style.display = 'grid';
+          } else {
+              sliderContainer.style.display = 'block';
+              galleryGrid.style.display = 'none';
+          }
+      }
+
+      // Initial check and setup
+      handleResize();
+
+      // Update on window resize
+      window.onresize = handleResize;
+  })();
+  </script>
+
+
+
+
+
+
+
+
+
 {{ end }}

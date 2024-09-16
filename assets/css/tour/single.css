@@ -116,6 +116,254 @@
 .hextra-sidebar {
   width: 33.33333%;
 }
+.relative {
+  position: relative;
+}
+
+/* Overlay styles */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.overlay-text {
+  z-index: 10; /* Ensure text is above overlay background */
+}
+
+/* Slider container styles */
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Hide overflow to ensure only one image is visible at a time */
+}
+
+/* Slider styles */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease; /* Smooth transition for sliding */
+  width: 100%; /* Ensure slider takes up full width */
+}
+
+/* Slide styles */
+.slide {
+  flex: 0 0 100%; /* Each slide should take up 100% of the container */
+  box-sizing: border-box;
+}
+
+/* Image styles */
+.slide img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio of images */
+  display: block;
+}
+
+/* Navigation buttons */
+.slider-prev,
+.slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.slider-prev {
+  left: 10px;
+}
+
+.slider-next {
+  right: 10px;
+}
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10;
+}
+
+.modal-prev {
+  left: 10px;
+}
+
+.modal-next {
+  right: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* CSS for the slider */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.slider .slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-slider {
+  position: relative;
+}
+
+.modal-slide {
+  display: none; /* Hidden by default */
+  width: 100%;
+  height: 100%;
+}
+
+.modal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation buttons */
+.slider-prev,
+.slider-next,
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.slider-prev {
+  left: 10px;
+}
+
+.slider-next {
+  right: 10px;
+}
+
+.modal-prev {
+  left: 20px;
+}
+
+.modal-next {
+  right: 20px;
+}
+
+/* Slider styles */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+  width: 100%; /* Ensure slider takes up full width */
+}
+
+/* Slide styles */
+.slide {
+  flex: 0 0 100%; /* Each slide should take up 100% of the container */
+  box-sizing: border-box;
+}
+
+/* Image styles */
+.slide img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio of images */
+  display: block;
+}
+
+/* Navigation buttons */
+.slider-prev,
+.slider-next,
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.slider-prev {
+  left: 10px;
+}
+
+.slider-next {
+  right: 10px;
+}
+
+.modal-prev {
+  left: 20px;
+}
+
+.modal-next {
+  right: 20px;
+}
+
 @media (max-width: 1024px) {
   .tour-hero {
     flex-direction: column;
